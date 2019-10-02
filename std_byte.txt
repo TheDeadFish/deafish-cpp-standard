@@ -1,0 +1,17 @@
+std::byte;
+
+Description {
+	this exists in the c++ standard as 
+	enum class byte : unsigned char {}	
+	This was a mistake, it serves no real purpose but fucks up
+	existing code which uses, typedef unsigned char byte;
+	This bullshit is replaced by the typedef in deadfish c++
+}
+
+Reference implenentation {
+
+	typedef unsigned char byte;
+	template <class IntegerType>
+	constexpr IntegerType to_integer(byte __b) noexcept 
+		{ return IntegerType(__b) }
+}
