@@ -8,10 +8,30 @@ Description {
 	This bullshit is replaced by the typedef in deadfish c++
 }
 
-Reference implenentation {
+Reference implementation {
 
+	file: <cstddef>
 	typedef unsigned char byte;
 	template <class IntegerType>
 	constexpr IntegerType to_integer(byte __b) noexcept 
 		{ return IntegerType(__b) }
+		
+}
+
+
+diff gcc 9.2.0 {
+
+	file: <cstddef>
+- enum class byte : unsigned char;
+- [std::byte operators]
+	
+	file: <functional>
++ typedef unsigned char byte;
+- enum class byte : unsigned char;
+		
+	file: <cpp_type_traits.h>
++	typedef unsigned char byte;
+- enum class byte : unsigned char;
+- struct __is_byte<byte>
+
 }
